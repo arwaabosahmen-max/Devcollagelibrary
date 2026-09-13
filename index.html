@@ -1,0 +1,1895 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>منصة المراجع الهندسية والكورسات المعتمدة</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#0E1E33; --blueprint:#16314F; --blueprint-deep:#0A1826;
+    --grid-line:rgba(146,196,222,0.16); --grid-line-strong:rgba(146,196,222,0.30);
+    --paper:#F3EFE4; --paper-dim:#EAE4D4; --brass:#B8862E; --brass-light:#D6A94E;
+    --text-dark:#182231; --text-mute:#5B6472; --line:#D8D0BC; --white:#FFFFFF;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  body{background:var(--paper); color:var(--text-dark); font-family:'IBM Plex Sans Arabic','IBM Plex Sans',sans-serif; line-height:1.6;}
+  body.lang-en{font-family:'IBM Plex Sans','IBM Plex Sans Arabic',sans-serif;}
+  .wrap{max-width:1180px; margin-inline:auto; padding-inline:28px;}
+
+  .topbar{position:sticky; top:0; z-index:50; background:rgba(243,239,228,0.94); backdrop-filter:blur(8px); border-bottom:1px solid var(--line);}
+  .topbar-inner{display:flex; align-items:center; justify-content:space-between; padding:16px 28px; max-width:1180px; margin-inline:auto;}
+  .brand{display:flex; align-items:center; gap:12px;}
+  .brand-text b{font-size:15px; font-weight:700; color:var(--ink); display:block;}
+  .brand-text span{font-size:11px; color:var(--brass);}
+  .lang-switch{display:flex; align-items:center; border:1.5px solid var(--ink); border-radius:999px; overflow:hidden; font-size:13px; font-weight:600; cursor:pointer;}
+  .lang-switch button{border:0; background:transparent; padding:7px 16px; cursor:pointer; font:inherit; color:var(--ink);}
+  .lang-switch button.active{background:var(--ink); color:var(--paper);}
+
+  .hero{position:relative; background:var(--blueprint-deep); color:var(--paper); overflow:hidden; padding:76px 0 56px; text-align:center;}
+  .hero::before{content:""; position:absolute; inset:0; background-image:linear-gradient(var(--grid-line) 1px, transparent 1px), linear-gradient(90deg, var(--grid-line) 1px, transparent 1px); background-size:44px 44px; mask-image:radial-gradient(ellipse 90% 80% at 50% 20%, black 40%, transparent 90%);}
+  .hero-inner{position:relative; z-index:2;}
+  .hero h1{font-size:clamp(28px,4.6vw,50px); font-weight:700; max-width:900px; margin-inline:auto;}
+  .hero p.sub{max-width:600px; margin:18px auto 0; color:#B9C3D2; font-size:16px;}
+  .hero-btn{display:inline-flex; align-items:center; gap:8px; margin-top:30px; background:var(--brass-light); color:var(--blueprint-deep); font-weight:700; font-size:15px; padding:13px 28px; border-radius:8px; text-decoration:none;}
+  .hero-btn:hover{background:#E4BB63;}
+
+  section{padding:64px 0;}
+  .section-head{display:flex; justify-content:space-between; align-items:flex-end; gap:24px; margin-bottom:36px; border-bottom:1px solid var(--line); padding-bottom:18px; flex-wrap:wrap;}
+  .section-head h2{font-size:clamp(22px,2.8vw,30px); font-weight:700; color:var(--ink);}
+  .section-head p{color:var(--text-mute); font-size:14.5px; max-width:360px;}
+
+  .spec-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:var(--line); border:1px solid var(--line);}
+  @media (max-width:900px){ .spec-grid{grid-template-columns:repeat(2,1fr);} }
+  @media (max-width:600px){ .spec-grid{grid-template-columns:1fr;} }
+  .spec-card{background:var(--paper); padding:26px 24px;}
+  .spec-card .idx{font-family:'Fraunces',serif; font-size:13px; color:var(--brass); margin-bottom:14px; display:block;}
+  .spec-card h3{font-size:17px; font-weight:700; margin-bottom:6px; color:var(--ink);}
+  .spec-card p{font-size:13px; color:var(--text-mute); margin-bottom:14px;}
+  .spec-meta{display:flex; gap:14px; font-size:12px; color:var(--text-dark); font-weight:500; border-top:1px dashed var(--line); padding-top:12px;}
+  .spec-meta b{color:var(--brass); font-family:'Fraunces',serif;}
+  .spec-link{display:inline-block; margin-top:14px; font-size:12.5px; font-weight:600; color:var(--blueprint); text-decoration:none; border-bottom:1px solid var(--blueprint);}
+
+  .dept-block{border:1px solid var(--line); background:var(--white); margin-bottom:26px;}
+  .dept-block-head{display:flex; justify-content:space-between; align-items:center; padding:18px 22px; background:var(--paper-dim); flex-wrap:wrap; gap:8px;}
+  .dept-block-head h3{font-size:17px; font-weight:700; color:var(--ink);}
+  .dept-block-head span.code{font-family:'Fraunces',serif; color:var(--brass); font-size:13px;}
+
+  .subsection-title{font-size:12px; font-weight:700; color:var(--brass); text-transform:uppercase; letter-spacing:.03em; padding:14px 22px 0;}
+  .curriculum{padding:8px 22px 20px; border-bottom:1px solid var(--line);}
+  .chapter{margin-bottom:14px;}
+  .chapter-title{font-size:13px; font-weight:700; color:var(--blueprint); margin-bottom:8px;}
+  .subject-chips{display:flex; flex-wrap:wrap; gap:7px;}
+  .subject-chip{font-size:12px; background:rgba(22,49,79,0.06); color:var(--text-dark); padding:5px 11px; border-radius:999px;}
+  a.subject-chip{background:rgba(184,134,46,0.12); color:var(--brass); text-decoration:none; font-weight:600;}
+  a.subject-chip:hover{background:rgba(184,134,46,0.22);}
+
+  .ref-grid{display:grid; grid-template-columns:repeat(2,1fr); gap:14px; padding:20px 22px;}
+  @media (max-width:700px){ .ref-grid{grid-template-columns:1fr;} }
+  .ref-card{border:1px solid var(--line); padding:14px 16px; display:flex; flex-direction:column; gap:6px;}
+  .ref-card .cat{align-self:flex-start; font-size:10.5px; font-weight:700; color:var(--brass); background:rgba(184,134,46,0.1); padding:3px 9px; border-radius:999px;}
+  .ref-card h5{font-size:14px; font-weight:700; color:var(--ink);}
+  .ref-card .author{font-size:12.5px; color:var(--text-mute); font-style:italic;}
+  .ref-card .note{font-size:12px; color:var(--text-dark);}
+  .ref-card a{font-size:12px; font-weight:600; color:var(--blueprint); text-decoration:none; align-self:flex-start; margin-top:4px;}
+
+  .course-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:18px; padding:20px 22px;}
+  @media (max-width:900px){ .course-grid{grid-template-columns:repeat(2,1fr);} }
+  @media (max-width:620px){ .course-grid{grid-template-columns:1fr;} }
+  .course-card{border:1px solid var(--line); padding:18px; border-radius:2px; display:flex; gap:14px;}
+  .course-card .info{flex:1; display:flex; flex-direction:column; gap:8px;}
+  .course-tags{display:flex; gap:6px; flex-wrap:wrap;}
+  .course-tag{font-size:10.5px; font-weight:600; color:var(--blueprint); background:rgba(22,49,79,0.07); padding:3px 9px; border-radius:999px;}
+  .course-tag.region{color:var(--brass); background:rgba(184,134,46,0.1);}
+  .course-card h4{font-size:14.5px; font-weight:700; color:var(--ink); line-height:1.4;}
+  .course-card .prov{font-size:12px; color:var(--text-mute);}
+  .course-open{display:inline-flex; align-items:center; gap:6px; font-size:12.5px; font-weight:600; color:var(--white); background:var(--blueprint); padding:8px 14px; border-radius:6px; text-decoration:none; align-self:flex-start; margin-top:auto;}
+  .course-open:hover{background:var(--ink);}
+  .qr-box{flex-shrink:0; text-align:center;}
+  .qr-box img{width:74px; height:74px; border:1px solid var(--line); padding:4px; background:var(--white);}
+  .qr-box span{display:block; font-size:9.5px; color:var(--text-mute); margin-top:4px;}
+
+  .platform-grid{display:grid; grid-template-columns:repeat(5,1fr); gap:16px;}
+  @media (max-width:900px){ .platform-grid{grid-template-columns:repeat(2,1fr);} }
+  .platform-card{border:1px solid var(--line); background:var(--white); padding:18px; text-align:center; text-decoration:none; color:var(--text-dark); display:block;}
+  .platform-card b{display:block; color:var(--ink); font-size:15px; margin-bottom:6px;}
+  .platform-card span{font-size:12px; color:var(--text-mute);}
+
+  footer{background:var(--blueprint-deep); color:#93A0B3; padding:36px 0; text-align:center; font-size:12.5px;}
+
+  [data-en]{display:none;}
+  body.lang-en [data-en]{display:revert;}
+  body.lang-en [data-ar]{display:none;}
+  span[data-en], b[data-en]{display:none;}
+  body.lang-en span[data-en], body.lang-en b[data-en]{display:inline;}
+  body.lang-en span[data-ar], body.lang-en b[data-ar]{display:none;}
+</style>
+</head>
+<body class="lang-ar">
+<div class="topbar">
+  <div class="topbar-inner">
+    <div class="brand">
+      <div class="brand-text">
+        <b data-ar>المراجع الهندسية والكورسات المعتمدة</b>
+        <b data-en>Engineering References &amp; Accredited Courses</b>
+      </div>
+    </div>
+    <div class="lang-switch">
+      <button id="btn-ar" class="active">AR</button>
+      <button id="btn-en">EN</button>
+    </div>
+  </div>
+</div>
+
+<section class="hero">
+  <div class="wrap hero-inner">
+    <h1 data-ar>منصة المراجع الهندسية والكورسات المعتمدة</h1>
+    <h1 data-en>Engineering References &amp; Accredited Courses Platform</h1>
+    <p class="sub" data-ar>المنهج الدراسي الكامل لكل تخصص، مع كورسات معتمدة حول العالم والوطن العربي — افتح أي كورس مباشرة أو امسح رمز QR الخاص به.</p>
+    <p class="sub" data-en>The full curriculum for every specialty, plus accredited courses worldwide and across the Arab world — open any course directly or scan its QR code.</p>
+    <a class="hero-btn" href="#specialties">
+      <span data-ar>تصفّح التخصصات ↓</span><span data-en>Browse Specialties ↓</span>
+    </a>
+  </div>
+</section>
+
+<section id="specialties">
+  <div class="wrap">
+    <div class="section-head">
+      <div><h2 data-ar>التخصصات الهندسية</h2><h2 data-en>Engineering Specialties</h2></div>
+      <p data-ar>عدد الفصول والمواد والكورسات المعتمدة لكل تخصص.</p>
+      <p data-en>Chapters, subjects, and accredited courses per specialty.</p>
+    </div>
+    <div class="spec-grid">
+      
+      <div class="spec-card">
+        <span class="idx">GEN</span>
+        <h3 data-ar>القسم العام</h3><h3 data-en>General Track</h3>
+        <p data-ar>المواد المشتركة لجميع التخصصات الهندسية في الفصل الأول.</p><p data-en>Shared first-year courses across all engineering tracks.</p>
+        <div class="spec-meta">
+          <div><b>1</b> <span data-ar>فصول</span><span data-en>chapters</span></div>
+          <div><b>4</b> <span data-ar>كورسات</span><span data-en>courses</span></div>
+        </div>
+        <a class="spec-link" href="#dept-GEN"><span data-ar>عرض المنهج والكورسات ↓</span><span data-en>View curriculum &amp; courses ↓</span></a>
+      </div>
+      
+      <div class="spec-card">
+        <span class="idx">SE</span>
+        <h3 data-ar>هندسة البرمجيات</h3><h3 data-en>Software Engineering</h3>
+        <p data-ar>هندسة الأنظمة، بنية البرمجيات، ضمان الجودة، ومنهجيات التطوير الحديثة.</p><p data-en>Systems design, software architecture, QA, and modern development methodologies.</p>
+        <div class="spec-meta">
+          <div><b>5</b> <span data-ar>فصول</span><span data-en>chapters</span></div>
+          <div><b>11</b> <span data-ar>كورسات</span><span data-en>courses</span></div>
+        </div>
+        <a class="spec-link" href="#dept-SE"><span data-ar>عرض المنهج والكورسات ↓</span><span data-en>View curriculum &amp; courses ↓</span></a>
+      </div>
+      
+      <div class="spec-card">
+        <span class="idx">IT</span>
+        <h3 data-ar>تقنية المعلومات</h3><h3 data-en>Information Technology</h3>
+        <p data-ar>البنية التحتية، الشبكات، أمن المعلومات، وإدارة قواعد البيانات.</p><p data-en>Infrastructure, networks, information security, and database administration.</p>
+        <div class="spec-meta">
+          <div><b>5</b> <span data-ar>فصول</span><span data-en>chapters</span></div>
+          <div><b>9</b> <span data-ar>كورسات</span><span data-en>courses</span></div>
+        </div>
+        <a class="spec-link" href="#dept-IT"><span data-ar>عرض المنهج والكورسات ↓</span><span data-en>View curriculum &amp; courses ↓</span></a>
+      </div>
+      
+      <div class="spec-card">
+        <span class="idx">CE</span>
+        <h3 data-ar>الهندسة المدنية</h3><h3 data-en>Civil Engineering</h3>
+        <p data-ar>تصميم الإنشاءات، الجسور، الطرق، وإدارة المشاريع الهندسية.</p><p data-en>Structural design, bridges, roads, and construction project management.</p>
+        <div class="spec-meta">
+          <div><b>6</b> <span data-ar>فصول</span><span data-en>chapters</span></div>
+          <div><b>6</b> <span data-ar>كورسات</span><span data-en>courses</span></div>
+        </div>
+        <a class="spec-link" href="#dept-CE"><span data-ar>عرض المنهج والكورسات ↓</span><span data-en>View curriculum &amp; courses ↓</span></a>
+      </div>
+      
+      <div class="spec-card">
+        <span class="idx">AE</span>
+        <h3 data-ar>قسم العمارة</h3><h3 data-en>Architecture Engineering</h3>
+        <p data-ar>التصميم المعماري، التخطيط الحضري، والاستدامة في المباني.</p><p data-en>Architectural design, urban planning, and building sustainability.</p>
+        <div class="spec-meta">
+          <div><b>6</b> <span data-ar>فصول</span><span data-en>chapters</span></div>
+          <div><b>5</b> <span data-ar>كورسات</span><span data-en>courses</span></div>
+        </div>
+        <a class="spec-link" href="#dept-AE"><span data-ar>عرض المنهج والكورسات ↓</span><span data-en>View curriculum &amp; courses ↓</span></a>
+      </div>
+      
+      <div class="spec-card">
+        <span class="idx">TE</span>
+        <h3 data-ar>قسم الاتصالات</h3><h3 data-en>Communications Engineering</h3>
+        <p data-ar>الشبكات، الاتصالات اللاسلكية، ومعالجة الإشارات.</p><p data-en>Networks, wireless communications, and signal processing.</p>
+        <div class="spec-meta">
+          <div><b>6</b> <span data-ar>فصول</span><span data-en>chapters</span></div>
+          <div><b>6</b> <span data-ar>كورسات</span><span data-en>courses</span></div>
+        </div>
+        <a class="spec-link" href="#dept-TE"><span data-ar>عرض المنهج والكورسات ↓</span><span data-en>View curriculum &amp; courses ↓</span></a>
+      </div>
+      
+      <div class="spec-card">
+        <span class="idx">PE</span>
+        <h3 data-ar>قسم النفط</h3><h3 data-en>Petroleum Engineering</h3>
+        <p data-ar>الحفر والإنتاج، هندسة المكامن، وسلامة العمليات النفطية.</p><p data-en>Drilling and production, reservoir engineering, and process safety.</p>
+        <div class="spec-meta">
+          <div><b>6</b> <span data-ar>فصول</span><span data-en>chapters</span></div>
+          <div><b>5</b> <span data-ar>كورسات</span><span data-en>courses</span></div>
+        </div>
+        <a class="spec-link" href="#dept-PE"><span data-ar>عرض المنهج والكورسات ↓</span><span data-en>View curriculum &amp; courses ↓</span></a>
+      </div>
+      
+    </div>
+  </div>
+</section>
+
+<section id="curriculum" style="background:var(--paper-dim);">
+  <div class="wrap">
+    <div class="section-head">
+      <div><h2 data-ar>المنهج الدراسي والكورسات المعتمدة</h2><h2 data-en>Curriculum &amp; Accredited Courses</h2></div>
+      <p data-ar>لكل تخصص: توزيع المواد على الفصول، وكورسات معتمدة حقيقية بروابط مباشرة ورمز QR.</p>
+      <p data-en>Per specialty: subjects by semester, plus real accredited courses with direct links and a QR code.</p>
+    </div>
+
+    
+    <div class="dept-block" id="dept-GEN">
+      <div class="dept-block-head">
+        <h3><span data-ar>القسم العام</span><span data-en>General Track</span></h3>
+        <span class="code">GEN</span>
+      </div>
+
+      
+      
+      <div class="subsection-title"><span data-ar>المنهج الدراسي (المواد المسبوقة بـ ↗ لها كورس معتمد مباشر)</span><span data-en>Curriculum (subjects marked ↗ have a direct accredited course)</span></div>
+      <div class="curriculum">
+        
+        <div class="chapter">
+          <div class="chapter-title">الفصل الأول</div>
+          <div class="subject-chips">
+            
+              
+              <a class="subject-chip" href="https://www.khanacademy.org/math" target="_blank" rel="noopener" title="رياضيات عامة">رياضة ↗</a>
+              
+            
+              
+              <a class="subject-chip" href="https://www.khanacademy.org/science/chemistry" target="_blank" rel="noopener" title="كيمياء عامة">كيمياء ↗</a>
+              
+            
+              
+              <a class="subject-chip" href="https://www.edraak.org/course/course-v1:edraak+CS50+T2_2020/" target="_blank" rel="noopener" title="مقدمة في علوم الحاسوب CS50">حاسب آلي (نظري) ↗</a>
+              
+            
+              
+              <a class="subject-chip" href="https://www.khanacademy.org/science/physics" target="_blank" rel="noopener" title="فيزياء عامة">فيزياء ↗</a>
+              
+            
+              
+              <span class="subject-chip">إنجليزي</span>
+              
+            
+          </div>
+        </div>
+        
+      </div>
+      
+
+      
+      <div class="subsection-title"><span data-ar>المراجع والكتب</span><span data-en>References &amp; Books</span></div>
+      <div class="ref-grid">
+        
+        <div class="ref-card">
+          <span class="cat">كتاب أساسي</span>
+          <h5>University Physics</h5>
+          <span class="author">Hugh D. Young, Roger A. Freedman</span>
+          <span class="note">مرجع الفيزياء العامة.</span>
+          <a href="https://openlibrary.org/search?q=University%20Physics" target="_blank" rel="noopener"><span data-ar>ابحث عن الكتاب ↗</span><span data-en>Find the book ↗</span></a>
+        </div>
+        
+        <div class="ref-card">
+          <span class="cat">كتاب أساسي</span>
+          <h5>Calculus</h5>
+          <span class="author">James Stewart</span>
+          <span class="note">مرجع الرياضيات (التفاضل والتكامل).</span>
+          <a href="https://openlibrary.org/search?q=Calculus" target="_blank" rel="noopener"><span data-ar>ابحث عن الكتاب ↗</span><span data-en>Find the book ↗</span></a>
+        </div>
+        
+      </div>
+      
+
+      
+    </div>
+    
+    <div class="dept-block" id="dept-SE">
+      <div class="dept-block-head">
+        <h3><span data-ar>هندسة البرمجيات</span><span data-en>Software Engineering</span></h3>
+        <span class="code">SE</span>
+      </div>
+
+      
+      
+      <div class="subsection-title"><span data-ar>المنهج الدراسي (المواد المسبوقة بـ ↗ لها كورس معتمد مباشر)</span><span data-en>Curriculum (subjects marked ↗ have a direct accredited course)</span></div>
+      <div class="curriculum">
+        
+        <div class="chapter">
+          <div class="chapter-title">الفصل الثاني</div>
+          <div class="subject-chips">
+            
+              
+              <span class="subject-chip">تصميم منطقي</span>
+              
+            
+              
+              <span class="subject-chip">مصطلحات فنية</span>
+              
+            
+              
+              <a class="subject-chip" href="https://www.rwaq.org/courses/introduction-to-programming" target="_blank" rel="noopener" title="مقدمة إلى البرمجة بلغة Python">برمجة 1 ↗</a>
+              
+            
+              
+              <span class="subject-chip">رياضة 2</span>
+              
+            
+              
+              <span class="subject-chip">أسس هندسة كهربائية</span>
+              
+            
+          </div>
+        </div>
+        
+        <div class="chapter">
+          <div class="chapter-title">الفصل الثالث</div>
+          <div class="subject-chips">
+            
+              
+              <a class="subject-chip" href="https://www.edx.org/learn/software-engineering/ibm-software-engineering-basics-for-everyone" target="_blank" rel="noopener" title="أساسيات هندسة البرمجيات">أسس هندسة البرمجيات ↗</a>
+              
+            
+              
+              <span class="subject-chip">كتابة التقارير الهندسة</span>
+              
+            
+              
+              <a class="subject-chip" href="https://www.khanacademy.org/math/statistics-probability" target="_blank" rel="noopener" title="الإحصاء والاحتمالات">إحصاء واحتمالات ↗</a>
+              
+            
+              
+              <span class="subject-chip">رياضة 3</span>
+              
+            
+              
+              <a class="subject-chip" href="https://www.edraak.org/course/course-v1:AOU+JAVA1+2016_T4SP/" target="_blank" rel="noopener" title="البرمجة بلغة الجافا 1">برمجة 2 ↗</a>
+              
+            
+          </div>
+        </div>
+        
+        <div class="chapter">
+          <div class="chapter-title">الفصل الرابع</div>
+          <div class="subject-chips">
+            
+              
+              <span class="subject-chip">معمارية الحاسوب</span>
+              
+            
+              
+              <span class="subject-chip">تحليل متطلبات البرمجيات</span>
+              
+            
+              
+              <span class="subject-chip">تفاعل الإنسان والحاسوب</span>
+              
+            
+              
+              <span class="subject-chip">برمجة الإنترنت 1</span>
+              
+            
+          </div>
+        </div>
+        
+        <div class="chapter">
+          <div class="chapter-title">الفصل الخامس</div>
+          <div class="subject-chips">
+            
+              
+              <a class="subject-chip" href="https://www.coursera.org/learn/akamai-operating-systems" target="_blank" rel="noopener" title="أساسيات نظم التشغيل">نظم تشغيل ↗</a>
+              
+            
+              
+              <a class="subject-chip" href="https://www.edx.org/learn/data-structures/ibm-data-structures-algorithms-using-c" target="_blank" rel="noopener" title="تراكيب البيانات والخوارزميات باستخدام ++C">تراكيب البيانات والخوارزميات ↗</a>
+              
+            
+              
+              <a class="subject-chip" href="https://www.coursera.org/learn/introduction-to-databases" target="_blank" rel="noopener" title="مقدمة إلى قواعد البيانات">نظم قواعد البيانات ↗</a>
+              
+            
+          </div>
+        </div>
+        
+        <div class="chapter">
+          <div class="chapter-title">الفصل السادس</div>
+          <div class="subject-chips">
+            
+              
+              <span class="subject-chip">مواضيع مختارة 2</span>
+              
+            
+              
+              <span class="subject-chip">قواعد بيانات متقدمة</span>
+              
+            
+              
+              <span class="subject-chip">التجارة الإلكترونية والتسويق الإلكتروني</span>
+              
+            
+              
+              <span class="subject-chip">اختبار وجودة البرمجيات</span>
+              
+            
+              
+              <a class="subject-chip" href="https://www.edx.org/learn/cybersecurity/harvard-university-cs50-s-introduction-to-cybersecurity" target="_blank" rel="noopener" title="مقدمة في الأمن السيبراني CS50">أمن البرمجيات ↗</a>
+              
+            
+          </div>
+        </div>
+        
+      </div>
+      
+
+      
+      <div class="subsection-title"><span data-ar>المراجع والكتب</span><span data-en>References &amp; Books</span></div>
+      <div class="ref-grid">
+        
+        <div class="ref-card">
+          <span class="cat">كتاب أساسي</span>
+          <h5>Software Engineering</h5>
+          <span class="author">Ian Sommerville</span>
+          <span class="note">المرجع الأشهر عالميًا في هندسة البرمجيات ودورة حياة تطوير الأنظمة.</span>
+          <a href="https://openlibrary.org/search?q=Software%20Engineering" target="_blank" rel="noopener"><span data-ar>ابحث عن الكتاب ↗</span><span data-en>Find the book ↗</span></a>
+        </div>
+        
+        <div class="ref-card">
+          <span class="cat">مرجع مساند</span>
+          <h5>Clean Code: A Handbook of Agile Software Craftsmanship</h5>
+          <span class="author">Robert C. Martin</span>
+          <span class="note">أساسيات كتابة كود نظيف وقابل للصيانة.</span>
+          <a href="https://openlibrary.org/search?q=Clean%20Code%3A%20A%20Handbook%20of%20Agile%20Software%20Craftsmanship" target="_blank" rel="noopener"><span data-ar>ابحث عن الكتاب ↗</span><span data-en>Find the book ↗</span></a>
+        </div>
+        
+        <div class="ref-card">
+          <span class="cat">كتاب أساسي</span>
+          <h5>Introduction to Algorithms</h5>
+          <span class="author">Cormen, Leiserson, Rivest, Stein</span>
+          <span class="note">مرجع تراكيب البيانات والخوارزميات (يُعرف اختصارًا بـ CLRS).</span>
+          <a href="https://openlibrary.org/search?q=Introduction%20to%20Algorithms" target="_blank" rel="noopener"><span data-ar>ابحث عن الكتاب ↗</span><span data-en>Find the book ↗</span></a>
+        </div>
+        
+        <div class="ref-card">
+          <span class="cat">مرجع مساند</span>
+          <h5>Database System Concepts</h5>
+          <span class="author">Silberschatz, Korth, Sudarshan</span>
+          <span class="note">مرجع نظم قواعد البيانات.</span>
+          <a href="https://openlibrary.org/search?q=Database%20System%20Concepts" target="_blank" rel="noopener"><span data-ar>ابحث عن الكتاب ↗</span><span data-en>Find the book ↗</span></a>
+        </div>
+        
+      </div>
+      
+
+      
+      <div class="subsection-title"><span data-ar>كورسات عامة للتخصص</span><span data-en>General Courses for this Specialty</span></div>
+      <div class="course-grid">
+        
+        <div class="course-card">
+          <div class="info">
+            <div class="course-tags">
+              <span class="course-tag">رواق</span>
+              <span class="course-tag region">الوطن العربي</span>
+              <span class="course-tag">مبتدئ</span>
+            </div>
+            <h4><span data-ar>مقدمة إلى البرمجة باستخدام Python</span><span data-en>Introduction to Programming (Python)</span></h4>
+            <p class="prov">رواق - التعليم المفتوح</p>
+            <a class="course-open" href="https://www.rwaq.org/courses/introduction-to-programming" target="_blank" rel="noopener">
+              <span data-ar>افتح الكورس ↗</span><span data-en>Open course ↗</span>
+            </a>
+          </div>
+          <div class="qr-box">
+            <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https%3A%2F%2Fwww.rwaq.org%2Fcourses%2Fintroduction-to-programming" alt="QR - مقدمة إلى البرمجة باستخدام Python" loading="lazy">
+            <span data-ar>امسح للفتح</span><span data-en>Scan to open</span>
+          </div>
+        </div>
+        
+        <div class="course-card">
+          <div class="info">
+            <div class="course-tags">
+              <span class="course-tag">إدراك</span>
+              <span class="course-tag region">الوطن العربي</span>
+              <span class="course-tag">مبتدئ</span>
+            </div>
+            <h4><span data-ar>البرمجة بلغة الجافا 1</span><span data-en>Java Programming 1</span></h4>
+            <p class="prov">جامعة القدس المفتوحة عبر إدراك</p>
+            <a class="course-open" href="https://www.edraak.org/course/course-v1:AOU+JAVA1+2016_T4SP/" target="_blank" rel="noopener">
+              <span data-ar>افتح الكورس ↗</span><span data-en>Open course ↗</span>
+            </a>
+          </div>
+          <div class="qr-box">
+            <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https%3A%2F%2Fwww.edraak.org%2Fcourse%2Fcourse-v1%3AAOU%2BJAVA1%2B2016_T4SP%2F" alt="QR - البرمجة بلغة الجافا 1" loading="lazy">
+            <span data-ar>امسح للفتح</span><span data-en>Scan to open</span>
+          </div>
+        </div>
+        
+        <div class="course-card">
+          <div class="info">
+            <div class="course-tags">
+              <span class="course-tag">edX</span>
+              <span class="course-tag region">عالمي</span>
+              <span class="course-tag">متوسط</span>
+            </div>
+            <h4><span data-ar>أساسيات هندسة البرمجيات</span><span data-en>Software Engineering Basics for Everyone</span></h4>
+            <p class="prov">IBM</p>
+            <a class="course-open" href="https://www.edx.org/learn/software-engineering/ibm-software-engineering-basics-for-everyone" target="_blank" rel="noopener">
+              <span data-ar>افتح الكورس ↗</span><span data-en>Open course ↗</span>
+            </a>
+          </div>
+          <div class="qr-box">
+            <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https%3A%2F%2Fwww.edx.org%2Flearn%2Fsoftware-engineering%2Fibm-software-engineering-basics-for-everyone" alt="QR - أساسيات هندسة البرمجيات" loading="lazy">
+            <span data-ar>امسح للفتح</span><span data-en>Scan to open</span>
+          </div>
+        </div>
+        
+      </div>
+      
+    </div>
+    
+    <div class="dept-block" id="dept-IT">
+      <div class="dept-block-head">
+        <h3><span data-ar>تقنية المعلومات</span><span data-en>Information Technology</span></h3>
+        <span class="code">IT</span>
+      </div>
+
+      
+      
+      <div class="subsection-title"><span data-ar>المنهج الدراسي (المواد المسبوقة بـ ↗ لها كورس معتمد مباشر)</span><span data-en>Curriculum (subjects marked ↗ have a direct accredited course)</span></div>
+      <div class="curriculum">
+        
+        <div class="chapter">
+          <div class="chapter-title">الفصل الثاني</div>
+          <div class="subject-chips">
+            
+              
+              <span class="subject-chip">أسس تقنية المعلومات</span>
+              
+            
+              
+              <span class="subject-chip">برمجة 1</span>
+              
+            
+              
+              <span class="subject-chip">رياضة 2</span>
+              
+            
+              
+              <span class="subject-chip">تصميم منطقي</span>
+              
+            
+              
+              <span class="subject-chip">مصطلحات فنية</span>
+              
+            
+          </div>
+        </div>
+        
+        <div class="chapter">
+          <div class="chapter-title">الفصل الثالث</div>
+          <div class="subject-chips">
+            
+              
+              <a class="subject-chip" href="https://www.rwaq.org/courses/principles-of-networks" target="_blank" rel="noopener" title="مبادئ شبكات الحاسب الآلي">شبكات الحاسوب 1 ↗</a>
+              
+            
+              
+              <span class="subject-chip">برمجة 2</span>
+              
+            
+              
+              <a class="subject-chip" href="https://www.coursera.org/learn/introduction-to-databases" target="_blank" rel="noopener" title="مقدمة إلى قواعد البيانات">قواعد بيانات 1 ↗</a>
+              
+            
+              
+              <span class="subject-chip">رياضة 3</span>
+              
+            
+              
+              <span class="subject-chip">إحصاء واحتمالات</span>
+              
+            
+          </div>
+        </div>
+        
+        <div class="chapter">
+          <div class="chapter-title">الفصل الرابع</div>
+          <div class="subject-chips">
+            
+              
+              <a class="subject-chip" href="https://www.coursera.org/learn/computer-networking" target="_blank" rel="noopener" title="أساسيات شبكات الحاسوب">إدارة شبكات الحاسوب ↗</a>
+              
+            
+              
+              <span class="subject-chip">تحليل وتصميم النظم</span>
+              
+            
+              
+              <span class="subject-chip">تطوير تطبيقات الويب</span>
+              
+            
+              
+              <a class="subject-chip" href="https://www.coursera.org/learn/akamai-operating-systems" target="_blank" rel="noopener" title="أساسيات نظم التشغيل">نظم التشغيل ↗</a>
+              
+            
+          </div>
+        </div>
+        
+        <div class="chapter">
+          <div class="chapter-title">الفصل الخامس</div>
+          <div class="subject-chips">
+            
+              
+              <a class="subject-chip" href="https://www.edx.org/learn/cybersecurity/harvard-university-cs50-s-introduction-to-cybersecurity" target="_blank" rel="noopener" title="مقدمة في الأمن السيبراني CS50">أمن الشبكات والمعلومات ↗</a>
+              
+            
+              
+              <span class="subject-chip">إدارة مراكز البيانات</span>
+              
+            
+              
+              <span class="subject-chip">قواعد بيانات متقدمة</span>
+              
+            
+              
+              <a class="subject-chip" href="https://www.coursera.org/learn/introduction-to-networking-and-cloud-computing" target="_blank" rel="noopener" title="مقدمة في الشبكات والحوسبة السحابية">الحوسبة السحابية ↗</a>
+              
+            
+          </div>
+        </div>
+        
+        <div class="chapter">
+          <div class="chapter-title">الفصل السادس</div>
+          <div class="subject-chips">
+            
+              
+              <span class="subject-chip">حوسبة متناقلة وتطبيقات الموبايل</span>
+              
+            
+              
+              <span class="subject-chip">إدارة مشاريع IT</span>
+              
+            
+              
+              <span class="subject-chip">إدارة نظم المعلومات ITIL</span>
+              
+            
+              
+              <span class="subject-chip">مواضيع مختارة في IT</span>
+              
+            
+          </div>
+        </div>
+        
+      </div>
+      
+
+      
+      <div class="subsection-title"><span data-ar>المراجع والكتب</span><span data-en>References &amp; Books</span></div>
+      <div class="ref-grid">
+        
+        <div class="ref-card">
+          <span class="cat">كتاب أساسي</span>
+          <h5>Computer Networking: A Top-Down Approach</h5>
+          <span class="author">James Kurose, Keith Ross</span>
+          <span class="note">المرجع الأشهر لتدريس الشبكات في الجامعات.</span>
+          <a href="https://openlibrary.org/search?q=Computer%20Networking%3A%20A%20Top-Down%20Approach" target="_blank" rel="noopener"><span data-ar>ابحث عن الكتاب ↗</span><span data-en>Find the book ↗</span></a>
+        </div>
+        
+        <div class="ref-card">
+          <span class="cat">كتاب أساسي</span>
+          <h5>Operating System Concepts</h5>
+          <span class="author">Silberschatz, Galvin, Gagne</span>
+          <span class="note">مرجع نظم التشغيل المعتمد عالميًا.</span>
+          <a href="https://openlibrary.org/search?q=Operating%20System%20Concepts" target="_blank" rel="noopener"><span data-ar>ابحث عن الكتاب ↗</span><span data-en>Find the book ↗</span></a>
+        </div>
+        
+        <div class="ref-card">
+          <span class="cat">مرجع مساند</span>
+          <h5>Computer Security: Principles and Practice</h5>
+          <span class="author">William Stallings, Lawrie Brown</span>
+          <span class="note">أمن المعلومات والشبكات.</span>
+          <a href="https://openlibrary.org/search?q=Computer%20Security%3A%20Principles%20and%20Practice" target="_blank" rel="noopener"><span data-ar>ابحث عن الكتاب ↗</span><span data-en>Find the book ↗</span></a>
+        </div>
+        
+      </div>
+      
+
+      
+      <div class="subsection-title"><span data-ar>كورسات عامة للتخصص</span><span data-en>General Courses for this Specialty</span></div>
+      <div class="course-grid">
+        
+        <div class="course-card">
+          <div class="info">
+            <div class="course-tags">
+              <span class="course-tag">رواق</span>
+              <span class="course-tag region">الوطن العربي</span>
+              <span class="course-tag">مبتدئ</span>
+            </div>
+            <h4><span data-ar>مبادئ شبكات الحاسب الآلي</span><span data-en>Principles of Computer Networks</span></h4>
+            <p class="prov">رواق - التعليم المفتوح</p>
+            <a class="course-open" href="https://www.rwaq.org/courses/principles-of-networks" target="_blank" rel="noopener">
+              <span data-ar>افتح الكورس ↗</span><span data-en>Open course ↗</span>
+            </a>
+          </div>
+          <div class="qr-box">
+            <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https%3A%2F%2Fwww.rwaq.org%2Fcourses%2Fprinciples-of-networks" alt="QR - مبادئ شبكات الحاسب الآلي" loading="lazy">
+            <span data-ar>امسح للفتح</span><span data-en>Scan to open</span>
+          </div>
+        </div>
+        
+        <div class="course-card">
+          <div class="info">
+            <div class="course-tags">
+              <span class="course-tag">Coursera</span>
+              <span class="course-tag region">عالمي</span>
+              <span class="course-tag">مبتدئ</span>
+            </div>
+            <h4><span data-ar>أساسيات شبكات الحاسوب</span><span data-en>The Bits and Bytes of Computer Networking</span></h4>
+            <p class="prov">Google</p>
+            <a class="course-open" href="https://www.coursera.org/learn/computer-networking" target="_blank" rel="noopener">
+              <span data-ar>افتح الكورس ↗</span><span data-en>Open course ↗</span>
+            </a>
+          </div>
+          <div class="qr-box">
+            <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https%3A%2F%2Fwww.coursera.org%2Flearn%2Fcomputer-networking" alt="QR - أساسيات شبكات الحاسوب" loading="lazy">
+            <span data-ar>امسح للفتح</span><span data-en>Scan to open</span>
+          </div>
+        </div>
+        
+        <div class="course-card">
+          <div class="info">
+            <div class="course-tags">
+              <span class="course-tag">Coursera</span>
+              <span class="course-tag region">عالمي</span>
+              <span class="course-tag">متقدم</span>
+            </div>
+            <h4><span data-ar>شبكات الحاسوب وأمن المعلومات</span><span data-en>Computer Networks and Network Security</span></h4>
+            <p class="prov">IBM</p>
+            <a class="course-open" href="https://www.coursera.org/learn/network-security-database-vulnerabilities" target="_blank" rel="noopener">
+              <span data-ar>افتح الكورس ↗</span><span data-en>Open course ↗</span>
+            </a>
+          </div>
+          <div class="qr-box">
+            <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https%3A%2F%2Fwww.coursera.org%2Flearn%2Fnetwork-security-database-vulnerabilities" alt="QR - شبكات الحاسوب وأمن المعلومات" loading="lazy">
+            <span data-ar>امسح للفتح</span><span data-en>Scan to open</span>
+          </div>
+        </div>
+        
+      </div>
+      
+    </div>
+    
+    <div class="dept-block" id="dept-CE">
+      <div class="dept-block-head">
+        <h3><span data-ar>الهندسة المدنية</span><span data-en>Civil Engineering</span></h3>
+        <span class="code">CE</span>
+      </div>
+
+      
+      
+      <div class="subsection-title"><span data-ar>المنهج الدراسي (المواد المسبوقة بـ ↗ لها كورس معتمد مباشر)</span><span data-en>Curriculum (subjects marked ↗ have a direct accredited course)</span></div>
+      <div class="curriculum">
+        
+        <div class="chapter">
+          <div class="chapter-title">الفصل الثاني</div>
+          <div class="subject-chips">
+            
+              
+              <span class="subject-chip">تقنية ورش</span>
+              
+            
+              
+              <span class="subject-chip">استاتيكا</span>
+              
+            
+              
+              <span class="subject-chip">مساحة 1</span>
+              
+            
+              
+              <span class="subject-chip">رياضة 2</span>
+              
+            
+              
+              <span class="subject-chip">مصطلحات فنية</span>
+              
+            
+              
+              <span class="subject-chip">مواد الإنشاء</span>
+              
+            
+          </div>
+        </div>
+        
+        <div class="chapter">
+          <div class="chapter-title">الفصل الثالث</div>
+          <div class="subject-chips">
+            
+              
+              <span class="subject-chip">رياضة 3</span>
+              
+            
+              
+              <span class="subject-chip">تقنية خرسانة</span>
+              
+            
+              
+              <span class="subject-chip">إنشاء مباني 1</span>
+              
+            
+              
+              <span class="subject-chip">خواص مواد</span>
+              
+            
+          </div>
+        </div>
+        
+        <div class="chapter">
+          <div class="chapter-title">الفصل الرابع</div>
+          <div class="subject-chips">
+            
+              
+              <span class="subject-chip">ميكانيكا موائع 1</span>
+              
+            
+              
+              <span class="subject-chip">اقتصاد هندسي</span>
+              
+            
+              
+              <a class="subject-chip" href="https://www.edx.org/learn/structural-engineering" target="_blank" rel="noopener" title="الهندسة الإنشائية">تحليل إنشائي 1 ↗</a>
+              
+            
+              
+              <span class="subject-chip">كتابة التقارير</span>
+              
+            
+          </div>
+        </div>
+        
+        <div class="chapter">
+          <div class="chapter-title">الفصل الخامس</div>
+          <div class="subject-chips">
+            
+              
+              <span class="subject-chip">تحليل إنشائي 2</span>
+              
+            
+              
+              <span class="subject-chip">ميكانيكا موائع 2</span>
+              
+            
+              
+              <span class="subject-chip">جيولوجيا هندسية</span>
+              
+            
+              
+              <a class="subject-chip" href="https://www.coursera.org/specializations/geotechnical-foundation-design" target="_blank" rel="noopener" title="تصميم الأساسات الجيوتقنية">ميكانيكا تربة 1 ↗</a>
+              
+            
+              
+              <a class="subject-chip" href="https://www.coursera.org/learn/design-basics-of-rcc-buildings" target="_blank" rel="noopener" title="أساسيات تصميم مباني الخرسانة المسلحة">خرسانة مسلحة 1 ↗</a>
+              
+            
+          </div>
+        </div>
+        
+        <div class="chapter">
+          <div class="chapter-title">الفصل السادس</div>
+          <div class="subject-chips">
+            
+              
+              <span class="subject-chip">تحليل إنشائي 3</span>
+              
+            
+              
+              <span class="subject-chip">ميكانيكا تربة 2</span>
+              
+            
+              
+              <span class="subject-chip">هندسة صحية 1</span>
+              
+            
+              
+              <span class="subject-chip">إدارة مشاريع هندسية</span>
+              
+            
+              
+              <span class="subject-chip">هيدرولوجيا</span>
+              
+            
+          </div>
+        </div>
+        
+        <div class="chapter">
+          <div class="chapter-title">الفصل السابع</div>
+          <div class="subject-chips">
+            
+              
+              <span class="subject-chip">هندسة طرق 2</span>
+              
+            
+              
+              <span class="subject-chip">تحليل إنشائي 3 (متقدم)</span>
+              
+            
+              
+              <span class="subject-chip">هندسة صحية 2</span>
+              
+            
+              
+              <span class="subject-chip">خرسانة مسلحة 2</span>
+              
+            
+              
+              <span class="subject-chip">هندسة الأنفاق</span>
+              
+            
+              
+              <span class="subject-chip">تصميم منشآت فولاذية</span>
+              
+            
+          </div>
+        </div>
+        
+      </div>
+      
+
+      
+      <div class="subsection-title"><span data-ar>المراجع والكتب</span><span data-en>References &amp; Books</span></div>
+      <div class="ref-grid">
+        
+        <div class="ref-card">
+          <span class="cat">كتاب أساسي</span>
+          <h5>Structural Analysis</h5>
+          <span class="author">R.C. Hibbeler</span>
+          <span class="note">المرجع الأساسي لمقررات التحليل الإنشائي.</span>
+          <a href="https://openlibrary.org/search?q=Structural%20Analysis" target="_blank" rel="noopener"><span data-ar>ابحث عن الكتاب ↗</span><span data-en>Find the book ↗</span></a>
+        </div>
+        
+        <div class="ref-card">
+          <span class="cat">كتاب أساسي</span>
+          <h5>Reinforced Concrete: Mechanics and Design</h5>
+          <span class="author">James K. Wight, James G. MacGregor</span>
+          <span class="note">مرجع تصميم الخرسانة المسلحة.</span>
+          <a href="https://openlibrary.org/search?q=Reinforced%20Concrete%3A%20Mechanics%20and%20Design" target="_blank" rel="noopener"><span data-ar>ابحث عن الكتاب ↗</span><span data-en>Find the book ↗</span></a>
+        </div>
+        
+        <div class="ref-card">
+          <span class="cat">مرجع مساند</span>
+          <h5>Principles of Geotechnical Engineering</h5>
+          <span class="author">Braja M. Das</span>
+          <span class="note">مرجع ميكانيكا التربة والأساسات.</span>
+          <a href="https://openlibrary.org/search?q=Principles%20of%20Geotechnical%20Engineering" target="_blank" rel="noopener"><span data-ar>ابحث عن الكتاب ↗</span><span data-en>Find the book ↗</span></a>
+        </div>
+        
+      </div>
+      
+
+      
+      <div class="subsection-title"><span data-ar>كورسات عامة للتخصص</span><span data-en>General Courses for this Specialty</span></div>
+      <div class="course-grid">
+        
+        <div class="course-card">
+          <div class="info">
+            <div class="course-tags">
+              <span class="course-tag">edX</span>
+              <span class="course-tag region">عالمي</span>
+              <span class="course-tag">متوسط</span>
+            </div>
+            <h4><span data-ar>الهندسة الإنشائية</span><span data-en>Structural Engineering</span></h4>
+            <p class="prov">edX</p>
+            <a class="course-open" href="https://www.edx.org/learn/structural-engineering" target="_blank" rel="noopener">
+              <span data-ar>افتح الكورس ↗</span><span data-en>Open course ↗</span>
+            </a>
+          </div>
+          <div class="qr-box">
+            <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https%3A%2F%2Fwww.edx.org%2Flearn%2Fstructural-engineering" alt="QR - الهندسة الإنشائية" loading="lazy">
+            <span data-ar>امسح للفتح</span><span data-en>Scan to open</span>
+          </div>
+        </div>
+        
+        <div class="course-card">
+          <div class="info">
+            <div class="course-tags">
+              <span class="course-tag">edX</span>
+              <span class="course-tag region">عالمي</span>
+              <span class="course-tag">مبتدئ</span>
+            </div>
+            <h4><span data-ar>تعلّم برنامج AutoCAD</span><span data-en>Learn AutoCAD</span></h4>
+            <p class="prov">edX</p>
+            <a class="course-open" href="https://www.edx.org/learn/autocad" target="_blank" rel="noopener">
+              <span data-ar>افتح الكورس ↗</span><span data-en>Open course ↗</span>
+            </a>
+          </div>
+          <div class="qr-box">
+            <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https%3A%2F%2Fwww.edx.org%2Flearn%2Fautocad" alt="QR - تعلّم برنامج AutoCAD" loading="lazy">
+            <span data-ar>امسح للفتح</span><span data-en>Scan to open</span>
+          </div>
+        </div>
+        
+        <div class="course-card">
+          <div class="info">
+            <div class="course-tags">
+              <span class="course-tag">edX</span>
+              <span class="course-tag region">عالمي</span>
+              <span class="course-tag">عام</span>
+            </div>
+            <h4><span data-ar>دورات الإنشاءات والبناء</span><span data-en>Construction Courses</span></h4>
+            <p class="prov">edX</p>
+            <a class="course-open" href="https://www.edx.org/learn/construction" target="_blank" rel="noopener">
+              <span data-ar>افتح الكورس ↗</span><span data-en>Open course ↗</span>
+            </a>
+          </div>
+          <div class="qr-box">
+            <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https%3A%2F%2Fwww.edx.org%2Flearn%2Fconstruction" alt="QR - دورات الإنشاءات والبناء" loading="lazy">
+            <span data-ar>امسح للفتح</span><span data-en>Scan to open</span>
+          </div>
+        </div>
+        
+      </div>
+      
+    </div>
+    
+    <div class="dept-block" id="dept-AE">
+      <div class="dept-block-head">
+        <h3><span data-ar>قسم العمارة</span><span data-en>Architecture Engineering</span></h3>
+        <span class="code">AE</span>
+      </div>
+
+      
+      
+      <div class="subsection-title"><span data-ar>المنهج الدراسي (المواد المسبوقة بـ ↗ لها كورس معتمد مباشر)</span><span data-en>Curriculum (subjects marked ↗ have a direct accredited course)</span></div>
+      <div class="curriculum">
+        
+        <div class="chapter">
+          <div class="chapter-title">الفصل الثاني</div>
+          <div class="subject-chips">
+            
+              
+              <span class="subject-chip">استاتيكا</span>
+              
+            
+              
+              <span class="subject-chip">رياضة 2</span>
+              
+            
+              
+              <span class="subject-chip">مصطلحات فنية</span>
+              
+            
+              
+              <span class="subject-chip">مواد الإنشاء</span>
+              
+            
+          </div>
+        </div>
+        
+        <div class="chapter">
+          <div class="chapter-title">الفصل الثالث</div>
+          <div class="subject-chips">
+            
+              
+              <a class="subject-chip" href="https://www.coursera.org/learn/design-draft-architectural-plans-using-autocad" target="_blank" rel="noopener" title="تصميم ورسم المخططات المعمارية عبر AutoCAD">إنشاء مباني 1 ↗</a>
+              
+            
+          </div>
+        </div>
+        
+        <div class="chapter">
+          <div class="chapter-title">الفصل الرابع</div>
+          <div class="subject-chips">
+            
+              
+              <span class="subject-chip">قوانين مباني</span>
+              
+            
+              
+              <a class="subject-chip" href="https://www.coursera.org/learn/roman-architecture" target="_blank" rel="noopener" title="العمارة الرومانية">تاريخ عمارة 1 ↗</a>
+              
+            
+              
+              <span class="subject-chip">تحليل إنشائي 1</span>
+              
+            
+              
+              <span class="subject-chip">إضاءة وصوت + تحكم بيئي</span>
+              
+            
+              
+              <span class="subject-chip">إنشاء مباني 2</span>
+              
+            
+          </div>
+        </div>
+        
+        <div class="chapter">
+          <div class="chapter-title">الفصل الخامس</div>
+          <div class="subject-chips">
+            
+              
+              <span class="subject-chip">تاريخ عمارة 2</span>
+              
+            
+              
+              <span class="subject-chip">كتابة تقارير</span>
+              
+            
+          </div>
+        </div>
+        
+        <div class="chapter">
+          <div class="chapter-title">الفصل السادس</div>
+          <div class="subject-chips">
+            
+              
+              <span class="subject-chip">تاريخ ونظريات التخطيط</span>
+              
+            
+              
+              <span class="subject-chip">تاريخ عمارة 3</span>
+              
+            
+              
+              <span class="subject-chip">ميكانيكا قواعد</span>
+              
+            
+              
+              <span class="subject-chip">إنشاء مباني 4</span>
+              
+            
+              
+              <span class="subject-chip">كميات ومواصفات</span>
+              
+            
+          </div>
+        </div>
+        
+        <div class="chapter">
+          <div class="chapter-title">الفصل السابع</div>
+          <div class="subject-chips">
+            
+              
+              <span class="subject-chip">خرسانة مسلحة</span>
+              
+            
+              
+              <span class="subject-chip">أنظمة إنشائية</span>
+              
+            
+              
+              <span class="subject-chip">إدارة المشاريع الهندسية</span>
+              
+            
+              
+              <a class="subject-chip" href="https://www.coursera.org/learn/introduction-to-interdisciplinary-sustainable-architecture" target="_blank" rel="noopener" title="مقدمة في العمارة المستدامة متعددة التخصصات">الإسكان والتصميم الحضري ↗</a>
+              
+            
+              
+              <span class="subject-chip">إنشاء مباني 5</span>
+              
+            
+          </div>
+        </div>
+        
+      </div>
+      
+
+      
+      <div class="subsection-title"><span data-ar>المراجع والكتب</span><span data-en>References &amp; Books</span></div>
+      <div class="ref-grid">
+        
+        <div class="ref-card">
+          <span class="cat">كتاب أساسي</span>
+          <h5>Architecture: Form, Space, and Order</h5>
+          <span class="author">Francis D.K. Ching</span>
+          <span class="note">مرجع أساسي في أصول التصميم المعماري.</span>
+          <a href="https://openlibrary.org/search?q=Architecture%3A%20Form%2C%20Space%2C%20and%20Order" target="_blank" rel="noopener"><span data-ar>ابحث عن الكتاب ↗</span><span data-en>Find the book ↗</span></a>
+        </div>
+        
+        <div class="ref-card">
+          <span class="cat">مرجع مساند</span>
+          <h5>A History of Architecture</h5>
+          <span class="author">Sir Banister Fletcher</span>
+          <span class="note">مرجع تاريخ العمارة عبر العصور.</span>
+          <a href="https://openlibrary.org/search?q=A%20History%20of%20Architecture" target="_blank" rel="noopener"><span data-ar>ابحث عن الكتاب ↗</span><span data-en>Find the book ↗</span></a>
+        </div>
+        
+        <div class="ref-card">
+          <span class="cat">مرجع مساند</span>
+          <h5>Building Construction Illustrated</h5>
+          <span class="author">Francis D.K. Ching</span>
+          <span class="note">مرجع تقنيات إنشاء المباني.</span>
+          <a href="https://openlibrary.org/search?q=Building%20Construction%20Illustrated" target="_blank" rel="noopener"><span data-ar>ابحث عن الكتاب ↗</span><span data-en>Find the book ↗</span></a>
+        </div>
+        
+      </div>
+      
+
+      
+      <div class="subsection-title"><span data-ar>كورسات عامة للتخصص</span><span data-en>General Courses for this Specialty</span></div>
+      <div class="course-grid">
+        
+        <div class="course-card">
+          <div class="info">
+            <div class="course-tags">
+              <span class="course-tag">Coursera</span>
+              <span class="course-tag region">عالمي</span>
+              <span class="course-tag">متوسط</span>
+            </div>
+            <h4><span data-ar>تصميم ورسم المخططات المعمارية عبر AutoCAD</span><span data-en>Design &amp; Draft Architectural Plans Using AutoCAD</span></h4>
+            <p class="prov">Packt</p>
+            <a class="course-open" href="https://www.coursera.org/learn/design-draft-architectural-plans-using-autocad" target="_blank" rel="noopener">
+              <span data-ar>افتح الكورس ↗</span><span data-en>Open course ↗</span>
+            </a>
+          </div>
+          <div class="qr-box">
+            <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https%3A%2F%2Fwww.coursera.org%2Flearn%2Fdesign-draft-architectural-plans-using-autocad" alt="QR - تصميم ورسم المخططات المعمارية عبر AutoCAD" loading="lazy">
+            <span data-ar>امسح للفتح</span><span data-en>Scan to open</span>
+          </div>
+        </div>
+        
+        <div class="course-card">
+          <div class="info">
+            <div class="course-tags">
+              <span class="course-tag">Coursera</span>
+              <span class="course-tag region">عالمي</span>
+              <span class="course-tag">متوسط</span>
+            </div>
+            <h4><span data-ar>مقدمة في العمارة المستدامة متعددة التخصصات</span><span data-en>Introduction to Interdisciplinary Sustainable Architecture</span></h4>
+            <p class="prov">Universitat Politècnica de València</p>
+            <a class="course-open" href="https://www.coursera.org/learn/introduction-to-interdisciplinary-sustainable-architecture" target="_blank" rel="noopener">
+              <span data-ar>افتح الكورس ↗</span><span data-en>Open course ↗</span>
+            </a>
+          </div>
+          <div class="qr-box">
+            <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https%3A%2F%2Fwww.coursera.org%2Flearn%2Fintroduction-to-interdisciplinary-sustainable-architecture" alt="QR - مقدمة في العمارة المستدامة متعددة التخصصات" loading="lazy">
+            <span data-ar>امسح للفتح</span><span data-en>Scan to open</span>
+          </div>
+        </div>
+        
+      </div>
+      
+    </div>
+    
+    <div class="dept-block" id="dept-TE">
+      <div class="dept-block-head">
+        <h3><span data-ar>قسم الاتصالات</span><span data-en>Communications Engineering</span></h3>
+        <span class="code">TE</span>
+      </div>
+
+      
+      
+      <div class="subsection-title"><span data-ar>المنهج الدراسي (المواد المسبوقة بـ ↗ لها كورس معتمد مباشر)</span><span data-en>Curriculum (subjects marked ↗ have a direct accredited course)</span></div>
+      <div class="curriculum">
+        
+        <div class="chapter">
+          <div class="chapter-title">الفصل الثاني</div>
+          <div class="subject-chips">
+            
+              
+              <span class="subject-chip">تقنية ورش</span>
+              
+            
+              
+              <span class="subject-chip">مصطلحات فنية</span>
+              
+            
+              
+              <span class="subject-chip">رياضة 2</span>
+              
+            
+              
+              <span class="subject-chip">أسس كهربائية</span>
+              
+            
+              
+              <span class="subject-chip">فيزياء 2</span>
+              
+            
+          </div>
+        </div>
+        
+        <div class="chapter">
+          <div class="chapter-title">الفصل الثالث</div>
+          <div class="subject-chips">
+            
+              
+              <a class="subject-chip" href="https://www.coursera.org/learn/electronics" target="_blank" rel="noopener" title="مقدمة في الإلكترونيات">الكترونات رقمية 1 ↗</a>
+              
+            
+              
+              <span class="subject-chip">مبادئ هندسة الكترونية</span>
+              
+            
+              
+              <span class="subject-chip">رياضة 3</span>
+              
+            
+              
+              <a class="subject-chip" href="https://www.coursera.org/learn/basic-electronics-odc" target="_blank" rel="noopener" title="أساسيات الإلكترونيات">دوائر كهربائية ↗</a>
+              
+            
+          </div>
+        </div>
+        
+        <div class="chapter">
+          <div class="chapter-title">الفصل الرابع</div>
+          <div class="subject-chips">
+            
+              
+              <span class="subject-chip">رياضة 4</span>
+              
+            
+              
+              <span class="subject-chip">دوائر الكترونية 1</span>
+              
+            
+              
+              <span class="subject-chip">إحصاء واحتمالات</span>
+              
+            
+              
+              <span class="subject-chip">الكترونات رقمية 2</span>
+              
+            
+          </div>
+        </div>
+        
+        <div class="chapter">
+          <div class="chapter-title">الفصل الخامس</div>
+          <div class="subject-chips">
+            
+              
+              <span class="subject-chip">وسائط نقل</span>
+              
+            
+              
+              <span class="subject-chip">دوائر الكترونية 2</span>
+              
+            
+              
+              <span class="subject-chip">كهرومغناطيسية</span>
+              
+            
+              
+              <span class="subject-chip">إشارات ونظم</span>
+              
+            
+          </div>
+        </div>
+        
+        <div class="chapter">
+          <div class="chapter-title">الفصل السادس</div>
+          <div class="subject-chips">
+            
+              
+              <span class="subject-chip">أنظمة التحكم</span>
+              
+            
+              
+              <a class="subject-chip" href="https://www.coursera.org/learn/fundamentals-network-communications" target="_blank" rel="noopener" title="أساسيات اتصالات الشبكات">منظومة اتصالات 1 ↗</a>
+              
+            
+              
+              <span class="subject-chip">معالجات دقيقة</span>
+              
+            
+              
+              <span class="subject-chip">الألياف البصرية</span>
+              
+            
+              
+              <span class="subject-chip">اتصالات رقمية 1</span>
+              
+            
+          </div>
+        </div>
+        
+        <div class="chapter">
+          <div class="chapter-title">الفصل السابع</div>
+          <div class="subject-chips">
+            
+              
+              <span class="subject-chip">أنظمة هواتف المحمولة</span>
+              
+            
+              
+              <span class="subject-chip">اتصالات رقمية 2</span>
+              
+            
+              
+              <span class="subject-chip">معالجة الإشارة الرقمية</span>
+              
+            
+              
+              <span class="subject-chip">أنظمة مقسمات الهواتف</span>
+              
+            
+              
+              <span class="subject-chip">الهوائيات</span>
+              
+            
+          </div>
+        </div>
+        
+      </div>
+      
+
+      
+      <div class="subsection-title"><span data-ar>المراجع والكتب</span><span data-en>References &amp; Books</span></div>
+      <div class="ref-grid">
+        
+        <div class="ref-card">
+          <span class="cat">كتاب أساسي</span>
+          <h5>Communication Systems</h5>
+          <span class="author">Simon Haykin</span>
+          <span class="note">مرجع أساسي في أنظمة الاتصالات.</span>
+          <a href="https://openlibrary.org/search?q=Communication%20Systems" target="_blank" rel="noopener"><span data-ar>ابحث عن الكتاب ↗</span><span data-en>Find the book ↗</span></a>
+        </div>
+        
+        <div class="ref-card">
+          <span class="cat">كتاب أساسي</span>
+          <h5>Microelectronic Circuits</h5>
+          <span class="author">Adel S. Sedra, Kenneth C. Smith</span>
+          <span class="note">مرجع الدوائر الإلكترونية.</span>
+          <a href="https://openlibrary.org/search?q=Microelectronic%20Circuits" target="_blank" rel="noopener"><span data-ar>ابحث عن الكتاب ↗</span><span data-en>Find the book ↗</span></a>
+        </div>
+        
+        <div class="ref-card">
+          <span class="cat">مرجع مساند</span>
+          <h5>Digital Signal Processing</h5>
+          <span class="author">John G. Proakis, Dimitris G. Manolakis</span>
+          <span class="note">مرجع معالجة الإشارة الرقمية.</span>
+          <a href="https://openlibrary.org/search?q=Digital%20Signal%20Processing" target="_blank" rel="noopener"><span data-ar>ابحث عن الكتاب ↗</span><span data-en>Find the book ↗</span></a>
+        </div>
+        
+      </div>
+      
+
+      
+      <div class="subsection-title"><span data-ar>كورسات عامة للتخصص</span><span data-en>General Courses for this Specialty</span></div>
+      <div class="course-grid">
+        
+        <div class="course-card">
+          <div class="info">
+            <div class="course-tags">
+              <span class="course-tag">رواق</span>
+              <span class="course-tag region">الوطن العربي</span>
+              <span class="course-tag">مبتدئ</span>
+            </div>
+            <h4><span data-ar>مقدمة في هندسة الطاقة والقوى</span><span data-en>Introduction to Power Engineering</span></h4>
+            <p class="prov">رواق - التعليم المفتوح</p>
+            <a class="course-open" href="https://www.rwaq.org/courses/power_engineering" target="_blank" rel="noopener">
+              <span data-ar>افتح الكورس ↗</span><span data-en>Open course ↗</span>
+            </a>
+          </div>
+          <div class="qr-box">
+            <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https%3A%2F%2Fwww.rwaq.org%2Fcourses%2Fpower_engineering" alt="QR - مقدمة في هندسة الطاقة والقوى" loading="lazy">
+            <span data-ar>امسح للفتح</span><span data-en>Scan to open</span>
+          </div>
+        </div>
+        
+        <div class="course-card">
+          <div class="info">
+            <div class="course-tags">
+              <span class="course-tag">Coursera</span>
+              <span class="course-tag region">عالمي</span>
+              <span class="course-tag">متوسط</span>
+            </div>
+            <h4><span data-ar>أساسيات اتصالات الشبكات</span><span data-en>Fundamentals of Network Communication</span></h4>
+            <p class="prov">University of Colorado</p>
+            <a class="course-open" href="https://www.coursera.org/learn/fundamentals-network-communications" target="_blank" rel="noopener">
+              <span data-ar>افتح الكورس ↗</span><span data-en>Open course ↗</span>
+            </a>
+          </div>
+          <div class="qr-box">
+            <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https%3A%2F%2Fwww.coursera.org%2Flearn%2Ffundamentals-network-communications" alt="QR - أساسيات اتصالات الشبكات" loading="lazy">
+            <span data-ar>امسح للفتح</span><span data-en>Scan to open</span>
+          </div>
+        </div>
+        
+        <div class="course-card">
+          <div class="info">
+            <div class="course-tags">
+              <span class="course-tag">edX</span>
+              <span class="course-tag region">عالمي</span>
+              <span class="course-tag">عام</span>
+            </div>
+            <h4><span data-ar>استكشاف مقررات الهندسة على edX</span><span data-en>Explore Engineering Courses</span></h4>
+            <p class="prov">edX</p>
+            <a class="course-open" href="https://www.edx.org/learn/engineering" target="_blank" rel="noopener">
+              <span data-ar>افتح الكورس ↗</span><span data-en>Open course ↗</span>
+            </a>
+          </div>
+          <div class="qr-box">
+            <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https%3A%2F%2Fwww.edx.org%2Flearn%2Fengineering" alt="QR - استكشاف مقررات الهندسة على edX" loading="lazy">
+            <span data-ar>امسح للفتح</span><span data-en>Scan to open</span>
+          </div>
+        </div>
+        
+      </div>
+      
+    </div>
+    
+    <div class="dept-block" id="dept-PE">
+      <div class="dept-block-head">
+        <h3><span data-ar>قسم النفط</span><span data-en>Petroleum Engineering</span></h3>
+        <span class="code">PE</span>
+      </div>
+
+      
+      
+      <div class="subsection-title"><span data-ar>المنهج الدراسي (المواد المسبوقة بـ ↗ لها كورس معتمد مباشر)</span><span data-en>Curriculum (subjects marked ↗ have a direct accredited course)</span></div>
+      <div class="curriculum">
+        
+        <div class="chapter">
+          <div class="chapter-title">الفصل الثاني</div>
+          <div class="subject-chips">
+            
+              
+              <span class="subject-chip">تقنية ورش</span>
+              
+            
+              
+              <span class="subject-chip">استاتيكا</span>
+              
+            
+              
+              <span class="subject-chip">كيمياء عضوية</span>
+              
+            
+              
+              <span class="subject-chip">رياضة 2</span>
+              
+            
+              
+              <span class="subject-chip">مصطلحات فنية</span>
+              
+            
+              
+              <span class="subject-chip">فيزياء 2</span>
+              
+            
+          </div>
+        </div>
+        
+        <div class="chapter">
+          <div class="chapter-title">الفصل الثالث</div>
+          <div class="subject-chips">
+            
+              
+              <a class="subject-chip" href="https://www.coursera.org/learn/hydrocarbon-exploration-and-production" target="_blank" rel="noopener" title="استكشاف وإنتاج الهيدروكربونات">مقدمة هندسة نفط ↗</a>
+              
+            
+              
+              <span class="subject-chip">ميكانيك موائع</span>
+              
+            
+              
+              <span class="subject-chip">جيولوجيا عامة</span>
+              
+            
+              
+              <span class="subject-chip">رياضة 3</span>
+              
+            
+              
+              <span class="subject-chip">كتابة تقارير</span>
+              
+            
+              
+              <span class="subject-chip">أسس كهربائية</span>
+              
+            
+          </div>
+        </div>
+        
+        <div class="chapter">
+          <div class="chapter-title">الفصل الرابع</div>
+          <div class="subject-chips">
+            
+              
+              <span class="subject-chip">معدات حقول النفط</span>
+              
+            
+              
+              <span class="subject-chip">ديناميكا حرارية</span>
+              
+            
+              
+              <span class="subject-chip">طرق تحسين آبار</span>
+              
+            
+              
+              <span class="subject-chip">صخور رسوبية</span>
+              
+            
+              
+              <span class="subject-chip">خواص صخور المكمن</span>
+              
+            
+          </div>
+        </div>
+        
+        <div class="chapter">
+          <div class="chapter-title">الفصل الخامس</div>
+          <div class="subject-chips">
+            
+              
+              <span class="subject-chip">خواص موائع المكمن</span>
+              
+            
+              
+              <span class="subject-chip">حفر وتصميم الآبار</span>
+              
+            
+              
+              <span class="subject-chip">مقاومة المواد</span>
+              
+            
+              
+              <span class="subject-chip">استكمال الآبار</span>
+              
+            
+              
+              <span class="subject-chip">تقييم مكامن النفطية</span>
+              
+            
+          </div>
+        </div>
+        
+        <div class="chapter">
+          <div class="chapter-title">الفصل السادس</div>
+          <div class="subject-chips">
+            
+              
+              <span class="subject-chip">تقنية سوائل الحفر</span>
+              
+            
+              
+              <span class="subject-chip">حفر وتصميم الآبار</span>
+              
+            
+              
+              <span class="subject-chip">جيولوجيا تركيبية</span>
+              
+            
+              
+              <span class="subject-chip">هندسة إنتاج 1</span>
+              
+            
+              
+              <span class="subject-chip">التآكل في الصناعة</span>
+              
+            
+              
+              <span class="subject-chip">جيولوجيا نفط</span>
+              
+            
+              
+              <span class="subject-chip">هندسة الغاز</span>
+              
+            
+          </div>
+        </div>
+        
+        <div class="chapter">
+          <div class="chapter-title">الفصل السابع</div>
+          <div class="subject-chips">
+            
+              
+              <span class="subject-chip">التسجيلات الآبار</span>
+              
+            
+              
+              <span class="subject-chip">صيانات وإصلاح الآبار</span>
+              
+            
+              
+              <a class="subject-chip" href="https://www.coursera.org/learn/from-wellhead-to-refinery-midstream-oil-and-gas-processing" target="_blank" rel="noopener" title="من البئر إلى المصفاة: المعالجة الوسيطة للنفط والغاز">نقل وتخزين النفط ↗</a>
+              
+            
+              
+              <span class="subject-chip">اقتصاديات هندسة النفط</span>
+              
+            
+              
+              <span class="subject-chip">هندسة إنتاج 2</span>
+              
+            
+              
+              <span class="subject-chip">اختبارات الآبار</span>
+              
+            
+              
+              <span class="subject-chip">هندسة المكامن</span>
+              
+            
+          </div>
+        </div>
+        
+      </div>
+      
+
+      
+      <div class="subsection-title"><span data-ar>المراجع والكتب</span><span data-en>References &amp; Books</span></div>
+      <div class="ref-grid">
+        
+        <div class="ref-card">
+          <span class="cat">كتاب أساسي</span>
+          <h5>Applied Petroleum Reservoir Engineering</h5>
+          <span class="author">B.C. Craft, M.F. Hawkins</span>
+          <span class="note">مرجع أساسي في هندسة المكامن.</span>
+          <a href="https://openlibrary.org/search?q=Applied%20Petroleum%20Reservoir%20Engineering" target="_blank" rel="noopener"><span data-ar>ابحث عن الكتاب ↗</span><span data-en>Find the book ↗</span></a>
+        </div>
+        
+        <div class="ref-card">
+          <span class="cat">كتاب أساسي</span>
+          <h5>Applied Drilling Engineering</h5>
+          <span class="author">Adam T. Bourgoyne Jr. et al.</span>
+          <span class="note">مرجع حفر وتصميم الآبار.</span>
+          <a href="https://openlibrary.org/search?q=Applied%20Drilling%20Engineering" target="_blank" rel="noopener"><span data-ar>ابحث عن الكتاب ↗</span><span data-en>Find the book ↗</span></a>
+        </div>
+        
+        <div class="ref-card">
+          <span class="cat">مرجع مساند</span>
+          <h5>Nontechnical Guide to Petroleum Geology, Exploration, Drilling, and Production</h5>
+          <span class="author">Norman J. Hyne</span>
+          <span class="note">مدخل شامل لجيولوجيا النفط.</span>
+          <a href="https://openlibrary.org/search?q=Nontechnical%20Guide%20to%20Petroleum%20Geology%2C%20Exploration%2C%20Drilling%2C%20and%20Production" target="_blank" rel="noopener"><span data-ar>ابحث عن الكتاب ↗</span><span data-en>Find the book ↗</span></a>
+        </div>
+        
+      </div>
+      
+
+      
+      <div class="subsection-title"><span data-ar>كورسات عامة للتخصص</span><span data-en>General Courses for this Specialty</span></div>
+      <div class="course-grid">
+        
+        <div class="course-card">
+          <div class="info">
+            <div class="course-tags">
+              <span class="course-tag">Coursera</span>
+              <span class="course-tag region">عالمي</span>
+              <span class="course-tag">متوسط</span>
+            </div>
+            <h4><span data-ar>استكشاف وإنتاج الهيدروكربونات</span><span data-en>Hydrocarbon Exploration and Production</span></h4>
+            <p class="prov">Coursera</p>
+            <a class="course-open" href="https://www.coursera.org/learn/hydrocarbon-exploration-and-production" target="_blank" rel="noopener">
+              <span data-ar>افتح الكورس ↗</span><span data-en>Open course ↗</span>
+            </a>
+          </div>
+          <div class="qr-box">
+            <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https%3A%2F%2Fwww.coursera.org%2Flearn%2Fhydrocarbon-exploration-and-production" alt="QR - استكشاف وإنتاج الهيدروكربونات" loading="lazy">
+            <span data-ar>امسح للفتح</span><span data-en>Scan to open</span>
+          </div>
+        </div>
+        
+        <div class="course-card">
+          <div class="info">
+            <div class="course-tags">
+              <span class="course-tag">Coursera</span>
+              <span class="course-tag region">عالمي</span>
+              <span class="course-tag">متقدم</span>
+            </div>
+            <h4><span data-ar>من البئر إلى المصفاة: المعالجة الوسيطة للنفط والغاز</span><span data-en>From Wellhead to Refinery: Midstream Oil and Gas Processing</span></h4>
+            <p class="prov">Coursera</p>
+            <a class="course-open" href="https://www.coursera.org/learn/from-wellhead-to-refinery-midstream-oil-and-gas-processing" target="_blank" rel="noopener">
+              <span data-ar>افتح الكورس ↗</span><span data-en>Open course ↗</span>
+            </a>
+          </div>
+          <div class="qr-box">
+            <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https%3A%2F%2Fwww.coursera.org%2Flearn%2Ffrom-wellhead-to-refinery-midstream-oil-and-gas-processing" alt="QR - من البئر إلى المصفاة: المعالجة الوسيطة للنفط والغاز" loading="lazy">
+            <span data-ar>امسح للفتح</span><span data-en>Scan to open</span>
+          </div>
+        </div>
+        
+        <div class="course-card">
+          <div class="info">
+            <div class="course-tags">
+              <span class="course-tag">Coursera</span>
+              <span class="course-tag region">عالمي</span>
+              <span class="course-tag">متقدم</span>
+            </div>
+            <h4><span data-ar>تطبيقات الذكاء الاصطناعي في صناعة النفط والغاز</span><span data-en>AI &amp; ML Applications in Oil and Gas Industry</span></h4>
+            <p class="prov">Coursera</p>
+            <a class="course-open" href="https://www.coursera.org/learn/aiml-applications-in-oil-and-gas-industry" target="_blank" rel="noopener">
+              <span data-ar>افتح الكورس ↗</span><span data-en>Open course ↗</span>
+            </a>
+          </div>
+          <div class="qr-box">
+            <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https%3A%2F%2Fwww.coursera.org%2Flearn%2Faiml-applications-in-oil-and-gas-industry" alt="QR - تطبيقات الذكاء الاصطناعي في صناعة النفط والغاز" loading="lazy">
+            <span data-ar>امسح للفتح</span><span data-en>Scan to open</span>
+          </div>
+        </div>
+        
+      </div>
+      
+    </div>
+    
+  </div>
+</section>
+
+<section id="platforms">
+  <div class="wrap">
+    <div class="section-head">
+      <div><h2 data-ar>منصات مجانية موصى بها</h2><h2 data-en>Recommended Free Platforms</h2></div>
+      <p data-ar>مصادر عربية وعالمية لكورسات مجانية معتمدة.</p>
+      <p data-en>Arab and global sources for free accredited courses.</p>
+    </div>
+    <div class="platform-grid">
+      
+      <a class="platform-card" href="https://www.edraak.org/" target="_blank" rel="noopener">
+        <b>إدراك</b>
+        <span>مبادرة مؤسسة الملكة رانيا، كورسات عربية مجانية بشهادات.</span>
+      </a>
+      
+      <a class="platform-card" href="https://www.rwaq.org/" target="_blank" rel="noopener">
+        <b>رواق</b>
+        <span>منصة عربية مفتوحة، أكثر من 300 مقرر مجاني.</span>
+      </a>
+      
+      <a class="platform-card" href="https://www.coursera.org/" target="_blank" rel="noopener">
+        <b>Coursera</b>
+        <span>كورسات جامعية عالمية، تدقيق مجاني ومتابعة بشهادة مدفوعة.</span>
+      </a>
+      
+      <a class="platform-card" href="https://www.edx.org/" target="_blank" rel="noopener">
+        <b>edX</b>
+        <span>أسسته MIT وHarvard، تدقيق مجاني لمعظم المقررات.</span>
+      </a>
+      
+      <a class="platform-card" href="https://teracourses.com/" target="_blank" rel="noopener">
+        <b>TeraCourses</b>
+        <span>منصة عربية تجمع كورسات من مصادر متعددة مجانًا.</span>
+      </a>
+      
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <span data-ar>© 2026 منصة المراجع الهندسية والكورسات المعتمدة</span>
+    <span data-en>© 2026 Engineering References &amp; Accredited Courses Platform</span>
+  </div>
+</footer>
+
+<script>
+  var btnAr = document.getElementById('btn-ar');
+  var btnEn = document.getElementById('btn-en');
+  var body = document.body;
+  function setLang(lang){
+    if(lang === 'en'){
+      document.documentElement.setAttribute('lang','en');
+      document.documentElement.setAttribute('dir','ltr');
+      body.classList.remove('lang-ar'); body.classList.add('lang-en');
+      btnEn.classList.add('active'); btnAr.classList.remove('active');
+    } else {
+      document.documentElement.setAttribute('lang','ar');
+      document.documentElement.setAttribute('dir','rtl');
+      body.classList.remove('lang-en'); body.classList.add('lang-ar');
+      btnAr.classList.add('active'); btnEn.classList.remove('active');
+    }
+  }
+  btnAr.addEventListener('click', function(){ setLang('ar'); });
+  btnEn.addEventListener('click', function(){ setLang('en'); });
+</script>
+</body>
+</html>
