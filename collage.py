@@ -7,7 +7,8 @@ app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///library.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 db = SQLAlchemy(app)
-
+with app.app_context():
+    db.create_all()
 # ----------------------------------------------------
 # 1. نماذج قاعدة البيانات (Models)
 # ----------------------------------------------------
